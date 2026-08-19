@@ -35,5 +35,16 @@ namespace TextRPG._01.Character._00.Player
                 m_Info.iMaxExp = (int)(m_Info.iMaxExp * 1.4f);
             }
         }
+
+        public void Revive()
+        {
+            m_Info.iCurHp = m_Info.iMaxHp;
+            m_Info.iCurExp -= 10;
+
+            if (m_Info.iCurExp <= 0)
+            {
+                m_Info.iCurExp = 0;
+            }
+        }
     }
 }

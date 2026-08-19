@@ -27,5 +27,7 @@ namespace TextRPG._00.MainGame
 
             return m_Instance;
         }
+
+        public Character GetPlayer() => m_Player;
     }
 }
