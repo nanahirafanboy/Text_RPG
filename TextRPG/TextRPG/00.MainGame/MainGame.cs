@@ -29,5 +29,23 @@ namespace TextRPG._00.MainGame
         }
 
         public Character GetPlayer() => m_Player;
+
+        public void Game()
+        {
+            while(true)
+            {
+                Console.WriteLine("    TextRPG    ");
+                Console.WriteLine("===============");
+                Console.WriteLine("1.게임시작 2.종료");
+
+                int iselect = int.Parse(Console.ReadLine());
+
+                switch(iselect)
+                {
+                    case 1:
+                        CreatePlayer();
+                }
+            }
+        }
     }
 }

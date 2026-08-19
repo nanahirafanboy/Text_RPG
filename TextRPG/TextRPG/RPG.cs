@@ -1,4 +1,5 @@
 ﻿using System;
+using TextRPG._00.MainGame;
 
 namespace TextRPG
 {
@@ -6,7 +7,9 @@ namespace TextRPG
     {
         public static void Main(string[] args)
         {
+            MainGame maingame = MainGame.Instance();
 
+            maingame.
         }
     }
 }

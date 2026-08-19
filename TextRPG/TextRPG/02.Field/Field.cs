@@ -41,6 +41,7 @@ namespace TextRPG._02.Field
                     case 1:
                         m_FieldType = FieldType.Dungeon;
                         m_Dungeon.Update();
+                        m_FieldType = FieldType.None;
                         break;
                 }
             }
