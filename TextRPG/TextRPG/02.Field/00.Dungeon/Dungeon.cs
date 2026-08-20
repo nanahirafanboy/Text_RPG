@@ -42,11 +42,13 @@ namespace TextRPG._02.Field._00.Dungeon
         {
             while(m_DungeonType == DungeonType.None)
             {
+                Console.Clear();
+
                 DungeonLevel();
 
-                int idungeonnum = int.Parse(Console.ReadLine());
+                bool bselect = int.TryParse(Console.ReadLine(), out int iselect);
 
-                switch(idungeonnum)
+                switch (iselect)
                 {
                     case 1:
                         m_DungeonType = DungeonType.SlimeDungeon;
@@ -61,6 +63,9 @@ namespace TextRPG._02.Field._00.Dungeon
                         m_Enemy = new Enemy("스켈레톤", 280, 30);
                         return true;
                     case 4:
+                        Console.Clear();
+                        Console.WriteLine("마을로 돌아갑니다.");
+                        Console.ReadLine();
                         return false;
                     default:
                         Console.WriteLine("잘못된 입력입니다. 다시 선택 하세요");
@@ -78,13 +83,14 @@ namespace TextRPG._02.Field._00.Dungeon
                 Console.Clear();
 
                 m_Player.ShowInfo();
+                Console.WriteLine();
                 m_Enemy.ShowInfo();
                 Console.WriteLine("=========================");
                 Console.WriteLine("1.전투 2.도망");
 
-                int iSelect = int.Parse(Console.ReadLine());
+                bool bselect = int.TryParse(Console.ReadLine(), out int iselect);
 
-                switch(iSelect)
+                switch (iselect)
                 {
                     case 1:
                         m_Enemy.TakeDamage(m_Player.GetInfo().iAtk);
@@ -92,10 +98,15 @@ namespace TextRPG._02.Field._00.Dungeon
                         break;
                     case 2:
                         m_DungeonType = DungeonType.None;
+                        Console.Clear();
+                        Console.WriteLine("던전입구로 돌아갑니다");
+                        Console.ReadLine();
                         DungeonSelect();
                         break;
                     default:
+                        Console.Clear();
                         Console.WriteLine("잘못된 입력입니다. 다시 선택 하세요");
+                        Console.ReadLine();
                         continue;
                 }
 
@@ -110,14 +121,18 @@ namespace TextRPG._02.Field._00.Dungeon
             if(!m_Player.IsLive())
             {
                 Console.WriteLine("사망하였습니다.");
+                Console.ReadLine();
                 Player m_player = (Player)m_Player;
                 m_player.Revive();
+                m_DungeonType = DungeonType.None;
             }
             else if(!m_Enemy.IsLive())
             {
                 Console.WriteLine("사냥성공");
+                Console.ReadLine();
                 Player m_player = (Player)m_Player;
                 m_player.TakeExp(15);
+                m_DungeonType = DungeonType.None;
             }
         }
     }

@@ -9,7 +9,9 @@ namespace TextRPG
         {
             MainGame maingame = MainGame.Instance();
 
-            maingame.
+            maingame.Game();
+
+            maingame.CheckPlayer();
         }
     }
 }

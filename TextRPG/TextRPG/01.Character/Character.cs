@@ -9,12 +9,6 @@ namespace TextRPG._01.Character
     {
         protected Info m_Info;
 
-        public Info Info
-        {
-            get => m_Info;
-            set => m_Info = value;
-        }
-
         public Character()
         {
             m_Info = default;

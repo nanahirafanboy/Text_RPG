@@ -27,14 +27,16 @@ namespace TextRPG._02.Field
             m_FieldType = FieldType.None;
 
             Character player = MainGame.Instance().GetPlayer();
-
-            player.ShowInfo();
-
+            
             while(m_FieldType == FieldType.None)
             {
+                Console.Clear();
+
+                player.ShowInfo();
+                Console.WriteLine();
                 Console.WriteLine("1.던전 2.상점 3.종료");
 
-                int iselect = int.Parse(Console.ReadLine());
+                bool bselect = int.TryParse(Console.ReadLine(), out int iselect);
 
                 switch(iselect)
                 {
@@ -43,6 +45,17 @@ namespace TextRPG._02.Field
                         m_Dungeon.Update();
                         m_FieldType = FieldType.None;
                         break;
+                    case 3:
+                        Console.Clear();
+                        Console.WriteLine("게임을 종료합니다");
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("다시 입력하세요");
+                        Console.ReadLine();
+                        Console.Clear();
+                        continue;
                 }
             }
         }
