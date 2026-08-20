@@ -94,24 +94,26 @@ namespace TextRPG._02.Field._00.Dungeon
                 {
                     case 1:
                         m_Enemy.TakeDamage(m_Player.GetInfo().iAtk);
-                        m_Player.TakeDamage(m_Enemy.GetInfo().iAtk);
+                        if(m_Enemy.IsLive())
+                        {
+                            m_Player.TakeDamage(m_Enemy.GetInfo().iAtk);
+                        }
                         break;
                     case 2:
                         m_DungeonType = DungeonType.None;
                         Console.Clear();
                         Console.WriteLine("던전입구로 돌아갑니다");
                         Console.ReadLine();
-                        DungeonSelect();
-                        break;
+                        return;
                     default:
                         Console.Clear();
                         Console.WriteLine("잘못된 입력입니다. 다시 선택 하세요");
                         Console.ReadLine();
                         continue;
                 }
-
-                BattleResult();
             }
+
+            BattleResult();
         }
 
         public void BattleResult()

@@ -118,6 +118,7 @@ namespace TextRPG._00.MainGame
                 Console.WriteLine("캐릭터 생성 성공");
                 Console.ReadLine();
                 Console.Clear();
+
                 Field();
             }
         }
@@ -126,10 +127,7 @@ namespace TextRPG._00.MainGame
         {
             m_Field = new Field();
 
-            while(true)
-            {
-                m_Field.SelectField();
-            }
+            m_Field.SelectField();
         }
     }
 }

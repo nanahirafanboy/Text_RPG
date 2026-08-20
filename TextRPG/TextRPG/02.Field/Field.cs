@@ -24,13 +24,15 @@ namespace TextRPG._02.Field
 
         public void SelectField()
         {
-            m_FieldType = FieldType.None;
-
             Character player = MainGame.Instance().GetPlayer();
+
+            bool bisrunning = true;
             
-            while(m_FieldType == FieldType.None)
+            while(m_FieldType == FieldType.None && bisrunning)
             {
                 Console.Clear();
+
+                m_FieldType = FieldType.None;
 
                 player.ShowInfo();
                 Console.WriteLine();
@@ -48,14 +50,14 @@ namespace TextRPG._02.Field
                     case 3:
                         Console.Clear();
                         Console.WriteLine("게임을 종료합니다");
-                        Environment.Exit(0);
+                        bisrunning = false;
                         break;
                     default:
                         Console.Clear();
                         Console.WriteLine("다시 입력하세요");
                         Console.ReadLine();
                         Console.Clear();
-                        continue;
+                        break;
                 }
             }
         }
